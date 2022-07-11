@@ -4,7 +4,7 @@
 
 class Student {
 
-private :
+private:
 	std::string rollNumber;
 	std::string name;
 	float mathMark;
@@ -15,21 +15,21 @@ private :
 	float average;
 	char grade;
 
-public : 
+public:
 	Student()
 		: rollNumber("0"), name("none"), mathMark(0), physicsMark(0), computerScienceMark(0), englishMark(0), networksArchitectureMark(0)
-		,average(0),grade('F')
+		, average(0), grade('F')
 	{
 	}
 
-	~Student(){}
+	~Student() {}
 
 	void create();
 	void search();
 	void displayAll();
 	void deletes();
 	void modify();
-		
+
 };
 
 
@@ -37,12 +37,12 @@ char choose() {
 
 	char choiceInput;
 	do {
-		std::cout << "\n\n			  Menu\n\n";
-		std::cout << "	    1)Create student record\n\n";
-		std::cout << "	    2)Search a student's record\n\n";
+		std::cout << "\n\n	      List of insrtuctions\n\n";
+		std::cout << "	    1)Create a student's record\n\n";
+		std::cout << "	    2)Search for a student's record\n\n";
 		std::cout << "	    3)Display all records\n\n";
-		std::cout << "	    4)Delete a student's record\n\n";
-		std::cout << "	    5)Modify a student's record\n\n";
+		std::cout << "	    4)Delete a record\n\n";
+		std::cout << "	    5)Modify a record\n\n";
 		std::cout << "	Please choose one instruction [1/2/3/4/5] .. ";
 
 		std::cin >> choiceInput;
@@ -51,7 +51,7 @@ char choose() {
 	return choiceInput;
 }
 
-void Student :: create() {
+void Student::create() {
 
 	std::cout << "Enter student's roll number:\n";
 	std::cin >> this->rollNumber;
@@ -95,7 +95,7 @@ void Student :: create() {
 }
 
 
-void Student :: search() {
+void Student::search() {
 
 	std::string test;
 
@@ -109,35 +109,35 @@ void Student :: search() {
 	while (std::getline(students, test)) {
 		if (test == this->rollNumber)
 		{
-			std::getline(students, test); std::cout << "The student's name is :" << test << "\n";
-			std::getline(students, test); std::cout << "The student's Math mark is :" << test << "\n";
-			std::getline(students, test); std::cout << "The student's Physics mark is :" << test << "\n";
-			std::getline(students, test); std::cout << "The student's Computer Science mark is :" << test << "\n";
-			std::getline(students, test); std::cout << "The student's Networks Architecture mark is :" << test << "\n";
-			std::getline(students, test); std::cout << "The student's English mark is :" << test << "\n";
-			std::getline(students, test); std::cout << "The student's Average is :" << test << "\n";
-			std::getline(students, test); std::cout << "The student's Grade is :" << test << "\n";
+			std::getline(students, test); std::cout << "The student's name is : " << test << "\n";
+			std::getline(students, test); std::cout << "The student's Math mark is : " << test << "\n";
+			std::getline(students, test); std::cout << "The student's Physics mark is : " << test << "\n";
+			std::getline(students, test); std::cout << "The student's Computer Science mark is : " << test << "\n";
+			std::getline(students, test); std::cout << "The student's Networks Architecture mark is : " << test << "\n";
+			std::getline(students, test); std::cout << "The student's English mark is : " << test << "\n";
+			std::getline(students, test); std::cout << "The student's Average is : " << test << "\n";
+			std::getline(students, test); std::cout << "The student's Grade is : " << test << "\n";
 			return;
 		}
 	}
 	std::cout << "\nStudent not found!\n";
 }
 
-void Student :: displayAll() {
+void Student::displayAll() {
 	std::string test;
 	std::fstream students;
 	students.open("Students.txt");
 	while (std::getline(students, test)) {
 
-		std::cout << "The student's roll number is :" << test << "\n";
-		std::getline(students, test); std::cout << "The student's name is :" << test << "\n";
-		std::getline(students, test); std::cout << "The student's Math mark is :" << test << "\n";
-		std::getline(students, test); std::cout << "The student's Physics mark is :" << test << "\n";
-		std::getline(students, test); std::cout << "The student's Computer Science mark is :" << test << "\n";
-		std::getline(students, test); std::cout << "The student's Networks Architecture mark is :" << test << "\n";
-		std::getline(students, test); std::cout << "The student's English mark is :" << test << "\n";
-		std::getline(students, test); std::cout << "The student's Average is :" << test << "\n";
-		std::getline(students, test); std::cout << "The student's Grade is :" << test << "\n";
+		std::cout << "The student's roll number is : " << test << "\n";
+		std::getline(students, test); std::cout << "The student's name is : " << test << "\n";
+		std::getline(students, test); std::cout << "The student's Math mark is : " << test << "\n";
+		std::getline(students, test); std::cout << "The student's Physics mark is : " << test << "\n";
+		std::getline(students, test); std::cout << "The student's Computer Science mark is : " << test << "\n";
+		std::getline(students, test); std::cout << "The student's Networks Architecture mark is : " << test << "\n";
+		std::getline(students, test); std::cout << "The student's English mark is : " << test << "\n";
+		std::getline(students, test); std::cout << "The student's Average is : " << test << "\n";
+		std::getline(students, test); std::cout << "The student's Grade is : " << test << "\n";
 		std::cout << "\n--------------------------------------\n";
 	}
 }
@@ -150,21 +150,20 @@ void Student::deletes() {
 	students.open("Students.txt");
 	std::cout << "Please enter the student's roll number:\n";
 	std::cin >> this->rollNumber;
+	copyFile.open("Copy.txt", std::ios_base::app);
 	while (std::getline(students, test)) {
 		if (test != this->rollNumber) {
-			copyFile.open("Copy.txt", std::ios_base::app);
-			copyFile << test<<"\n";
-			copyFile.close();
+			copyFile << test << "\n";
 		}
 		else {
-			for (int i = 0; i < 8; i++) { 
+			for (int i = 0; i < 8; i++) {
 				std::getline(students, test);
 			}
-			 rollNumberFound = true;
+			rollNumberFound = true;
 		}
 	}
 	students.close();
-	
+	copyFile.close();
 	remove("Students.txt");
 	rename("Copy.txt", "Students.txt");
 
@@ -172,12 +171,12 @@ void Student::deletes() {
 		std::cout << "Student not found!\n";
 	}
 	else {
-		std::cout<<("Student record has been deleted\n");
+		std::cout << ("Student record has been deleted\n");
 	}
 
 }
 
-void Student :: modify() {
+void Student::modify() {
 	deletes();
 	create();
 }
