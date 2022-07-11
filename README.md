@@ -17,3 +17,5 @@ The line number 1 stores the student's roll number.
 The line number 2 stores name.
 The lines from 3 to 8 store the student's grades.
 The line number 9 (last line of the block) stores the student's grade.
+
+![gpa stuff](https://user-images.githubusercontent.com/107933631/178334983-19e940c2-5a21-4d38-b84e-98253d8831ff.jpeg)
